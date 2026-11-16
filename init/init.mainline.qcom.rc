@@ -44,10 +44,12 @@ on shutdown
     stop vendor.rmtfs
 
 # Persist
-on post-fs
-    mkdir /mnt/vendor/persist-overlayfs-upperdir
-    mkdir /mnt/vendor/persist-overlayfs-workdir
-    mount overlay overlay /mnt/vendor/persist rw lowerdir=/mnt/vendor/persist,upperdir=/mnt/vendor/persist-overlayfs-upperdir,workdir=/mnt/vendor/persist-overlayfs-workdir
+# Note: Do not overlay persist with tmpfs on targets where persist is real flash storage,
+# otherwise written files (such as klog/last_kmsg) are lost on reset/reboot.
+# on post-fs
+#     mkdir /mnt/vendor/persist-overlayfs-upperdir
+#     mkdir /mnt/vendor/persist-overlayfs-workdir
+#     mount overlay overlay /mnt/vendor/persist rw lowerdir=/mnt/vendor/persist,upperdir=/mnt/vendor/persist-overlayfs-upperdir,workdir=/mnt/vendor/persist-overlayfs-workdir
 
 # Remoteproc
 on property:vendor.remoteproc.trigger_start=*

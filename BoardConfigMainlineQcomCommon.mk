@@ -9,6 +9,8 @@ USES_DEVICE_MAINLINE_QCOM_COMMON := true
 include device/mainline/common/BoardConfigMainlineCommon.mk
 
 # Include the fragments
+MAINLINE_QCOM_COMMON_PATH ?= device/mainline/qcom-common
+MAINLINE_QCOM_COMMON_SOC_PATH ?= $(MAINLINE_QCOM_COMMON_PATH)/soc/$(TARGET_QCOM_SOC_FAMILY)
 -include $(MAINLINE_QCOM_COMMON_PATH)/optional/*/board.mk
 include $(MAINLINE_QCOM_COMMON_SOC_PATH)/board.mk
 

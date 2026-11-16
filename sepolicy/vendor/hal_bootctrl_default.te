@@ -4,6 +4,7 @@ allowxperm hal_bootctl_default bootloader_block_device:blk_file ioctl { BLKSSZGE
 allow hal_bootctl_default boot_block_device:blk_file r_file_perms;
 allow hal_bootctl_default device:dir r_dir_perms;
 allow hal_bootctl_default dtbo_block_device:blk_file r_file_perms;
+allow hal_bootctl_default misc_block_device:blk_file rw_file_perms;
 allow hal_bootctl_default recovery_block_device:blk_file r_file_perms;
 allow hal_bootctl_default sysfs_devices_block:file rw_file_perms;
 allow hal_bootctl_default vendor_bsg_device:chr_file rw_file_perms;
